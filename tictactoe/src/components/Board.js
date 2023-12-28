@@ -1,69 +1,78 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Square from './Square';
 import "./Board.css"
 
-export default class Board extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            squares: Array(9).fill(null),
+const Board = () => {
+
+    const [squares, setSquares] = useState(Array(9).fill(null))
+    const [xIsNext, setXIsNext] = useState(true)
+
+    //승자 확인 로직
+    const calculateWinner = (squares) => {
+        const lines = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ]
+        for (let index = 0; index < lines.length; index++) {
+            const [a, b, c] = lines[index];
+            if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+                return squares[a];
+            }
         }
+        return null;
     }
-    handleClick(i) {
-        const squares = this.state.squares.slice();
-        squares[i] = 'X'
-        this.setState({ squares: squares })
+
+    const winnder = calculateWinner(squares)
+    let status;
+
+    if (winnder) {
+        status = `Winner: ${winnder}`
+    } else {
+        status = `Next Player: ${xIsNext ? 'X' : 'O'}`
+    }
+
+    //클릭 이벤트
+    const handleClick = (i) => {
+        const newSquares = squares.slice();
+        newSquares[i] = xIsNext ? 'X' : 'O'
+        setSquares(newSquares)
+        // setXIsNext(!xIsNext)
+        setXIsNext(prev => !prev)
 
     }
 
-    renderSquare(i) {
-        return <Square value={this.state.squares[i]}
-            onClick={() => this.handleClick(i)} />
+    const renderSquare = (i) => {
+        return <Square value={squares[i]}
+            onClick={() => handleClick(i)} />
     }
 
-    render() {
-        return (
-            <div>
-                <div className='status'>Next Player: X, 0</div>
-                <div className='board-row'>
-                    {this.renderSquare(0)}
-                    {this.renderSquare(1)}
-                    {this.renderSquare(2)}
-                </div>
-                <div className='board-row'>
-                    {this.renderSquare(3)}
-                    {this.renderSquare(4)}
-                    {this.renderSquare(5)}
-                </div>
-                <div className='board-row'>
-                    {this.renderSquare(6)}
-                    {this.renderSquare(7)}
-                    {this.renderSquare(8)}
-                </div>
+    return (
+        <div>
+            <div className='status'>{status}</div>
+            <div className='board-row'>
+                {renderSquare(0)}
+                {renderSquare(1)}
+                {renderSquare(2)}
             </div>
-        );
-    }
+            <div className='board-row'>
+                {renderSquare(3)}
+                {renderSquare(4)}
+                {renderSquare(5)}
+            </div>
+            <div className='board-row'>
+                {renderSquare(6)}
+                {renderSquare(7)}
+                {renderSquare(8)}
+            </div>
+        </div>
+    );
+
 }
 
-
-//위코드를 간단하게 나타내는 방법(map 함수 사용)
-// export default class Board extends Component {
-//     renderSquare(i) {
-//         return <Square key={i} value={i} />;
-//     }
-
-//     render() {
-//         const rows = Array(3).fill(null);
-
-//         return (
-//             <div>
-//                 <div className='status'>Next Player: X, 0</div>
-//                 {rows.map((row, rowIndex) => (
-//                     <div key={rowIndex} className='board-row'>
-//                         {rows.map((_, colIndex) => this.renderSquare(rowIndex * 3 + colIndex))}
-//                     </div>
-//                 ))}
-//             </div>
-//         );
-//     }
-// }
+export default Board
