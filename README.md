@@ -8,16 +8,12 @@
 
 ## 설치 및 실행
 
-이 저장소를 클론합니다
-git clone https://github.com/Choi-jeonghoon/TicTacToe
-프로젝트 폴더로 이동합니다:
+이 저장소를 클론합니다 : git clone https://github.com/Choi-jeonghoon/TicTacToe
 
-cd TicTacToe
-
-npm install
-개발 서버를 실행합니다:
-
-npm start
+    cd TicTacToe
+    npm install
+    npm start
+    
 브라우저에서 http://localhost:3000 에 접속하여 게임을 플레이할 수 있습니다.
 
 ## 게임 규칙
