@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+React Tic Tac Toe 게임
+이 프로젝트는 React.js를 사용하여 개발 중인 Tic Tac Toe 게임입니다. 이 게임은 React 18 버전에서 개발되었으며, Node.js 버전은 v21.7.1을 사용하여 개발되었습니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+개요
+이 프로젝트는 React 학습을 위한 샘플 프로젝트로서, Tic Tac Toe 게임을 구현함으로써 React 및 기본적인 웹 개발 스킬을 연습하는 데 목적이 있습니다. Tic Tac Toe는 두 플레이어 간에 번갈아가며 3x3 보드에 'X'와 'O'를 채우는 간단한 게임입니다.
 
-## Available Scripts
+설치 및 실행
+이 저장소를 클론합니다:
 
-In the project directory, you can run:
+bash
+Copy code
+git clone https://github.com/Choi-jeonghoon/TicTacToe
+프로젝트 폴더로 이동합니다:
 
-### `npm start`
+bash
+Copy code
+cd TicTacToe
+필요한 패키지를 설치합니다:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Copy code
+npm install
+개발 서버를 실행합니다:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+sql
+Copy code
+npm start
+브라우저에서 http://localhost:3000 에 접속하여 게임을 플레이할 수 있습니다.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+게임 규칙
+Tic Tac Toe 게임은 두 플레이어 간에 번갈아가며 진행됩니다.
+각 플레이어는 자신의 차례에 빈 셀에 'X' 또는 'O'를 선택합니다.
+가로, 세로 또는 대각선 방향으로 동일한 기호가 3개 연속되면 해당 플레이어가 승리합니다.
+모든 셀이 채워지고 아무도 승리하지 않으면 무승부로 판정됩니다.
