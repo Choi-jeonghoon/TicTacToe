@@ -5,6 +5,7 @@ import Board from "./components/Board";
 function App() {
   const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
   const [xIsNext, setXIsNext] = useState(true);
+  const [stepNum, setStepNum] = useState(0);
 
   //승자 확인 로직
   const calculateWinner = (squares) => {
@@ -31,7 +32,7 @@ function App() {
     return null;
   };
 
-  const current = history[history.length - 1];
+  const current = history[stepNum];
   const winnder = calculateWinner(current.squares);
 
   let status;
@@ -43,24 +44,34 @@ function App() {
   }
 
   const handleClick = (i) => {
-    const newSquares = current.squares.slice();
+    const newHistory = history.slice(0, stepNum + 1);
+    const newCuttent = newHistory[newHistory.length - 1];
+    const newSquares = newCuttent.squares.slice();
     if (calculateWinner(newSquares) || newSquares[i]) {
       return;
     }
 
     newSquares[i] = xIsNext ? "X" : "O";
-    setHistory([...history, { squares: newSquares }]);
+    setHistory([...newHistory, { squares: newSquares }]);
     setXIsNext((prev) => !prev);
+
+    setStepNum(newHistory.length++);
   };
 
   const moves = history.map((step, move) => {
     const desc = move ? "Go to move" + move : "Go to game start";
     return (
       <li key={move}>
-        <button>{desc}</button>
+        <button onClick={() => jumpTo(move)}>{desc}</button>
       </li>
     );
   });
+
+  const jumpTo = (step) => {
+    setStepNum(step);
+    setXIsNext(step % 2 === 0);
+  };
+
   return (
     <div className="game">
       <div className="game-board">
