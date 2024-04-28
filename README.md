@@ -13,8 +13,10 @@
     cd TicTacToe
     npm install
     npm start
-    
+
 브라우저에서 http://localhost:3000 에 접속하여 게임을 플레이할 수 있습니다.
+
+또는 https://Choi-jeonghoon.github.io/TicTacToe 로 접속하여 확인가능하다.
 
 ## 게임 규칙
 
