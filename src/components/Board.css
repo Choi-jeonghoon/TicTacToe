@@ -1,3 +1,10 @@
 .status {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.board-wrapper {
+  border: 1px soild rgba(255, 255, 255, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px;
+  border-radius: 9px;
+  overflow: hidden;
 }
